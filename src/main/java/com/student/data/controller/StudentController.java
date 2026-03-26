@@ -1,5 +1,6 @@
 package com.student.data.controller;
 
+import com.student.data.annotation.GetExecutionTime;
 import com.student.data.service.StudentService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,14 +18,16 @@ public class StudentController {
     }
 
     @GetMapping("/rollNumber/{rollNumber}/subjectDetail")
-    public Object getSubjects(@PathVariable Integer rollNumber)
-    {
+    @GetExecutionTime
+    public Object getSubjects(@PathVariable Integer rollNumber) throws InterruptedException {
+        Thread.sleep(5000);
         return studentService.getSubjects(rollNumber) == null ? new Exception("Student not found!").getMessage() : studentService.getSubjects(rollNumber);
     }
 
     @GetMapping("/rollNumber/{rollNumber}/studentDetail")
-    public Object getStudentDetail(@PathVariable Integer rollNumber)
-    {
+    @GetExecutionTime
+    public Object getStudentDetail(@PathVariable Integer rollNumber) throws InterruptedException {
+        Thread.sleep(2000);
         return studentService.getStudentDetail(rollNumber) == null ? new Exception("Student not found!").getMessage() : studentService.getStudentDetail(rollNumber);
     }
 }
