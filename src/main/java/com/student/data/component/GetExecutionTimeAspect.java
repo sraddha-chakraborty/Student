@@ -17,11 +17,11 @@ public class GetExecutionTimeAspect {
 
     @Around("@annotation(com.student.data.annotation.GetExecutionTime)")
     public Object getExecutiomTime(ProceedingJoinPoint joinPoint) throws Throwable {
-        String eventId = UUID.randomUUID().toString();
-        MDC.put("eventId", eventId);
-        MDC.put("catSays", "Meowwwww");
+//        String eventId = UUID.randomUUID().toString();
+//        MDC.put("eventId", eventId);
+//        MDC.put("catSays", "Meowwwww");
 
-        try {
+//        try {
             long startTime = System.currentTimeMillis();
             Object result = joinPoint.proceed();
             long endTime = System.currentTimeMillis();
@@ -33,9 +33,9 @@ public class GetExecutionTimeAspect {
             log.info("-------------------------------------");
 
             return result;
-        }
-        finally {
-            MDC.clear();
-        }
+//        }
+//        finally {
+//            MDC.clear();
+//        }
     }
 }
